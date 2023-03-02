@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <title>What's my goall</title>
+    <link
+            rel="shortcut icon"
+            href="{{ url_for('static', filename='goal.png') }}"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+<img src="{{ url_for('static', filename='goal.png') }}" class="icon" />
+<h3>Goals I can set to help me become a...</h3>
+<form action="/" method="post">
+    <input type="text" name="future_career" placeholder="What do you want to be when you grow up?" required />
+    <input type="submit" value="⭐️ Help me explore goal setting ideas ⭐️" />
+</form>
+{% if openAIAnswer %}
+
+
+<div class="p-3 rounded">
+    <div class="row">
+      <div class="col-lg-12">
+        <h4 class="text-primary">{{prompt}}</h4>
+        {% autoescape false %}
+        <p class="result-text">{{openAIAnswer}}</p>
+        {% endautoescape %}
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+
+<div style="position: absolute; bottom: 5px;">
+  <p> Check out code from <a href="https://github.com/gary-mu/whatsmygoal">Github repo </a> </p>
+  <p style="text-align: center;">Go back <a href="https://www.garymu.com">home</a></p>
+</div>
+</body>
